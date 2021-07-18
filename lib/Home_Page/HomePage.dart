@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Color.fromRGBO(30, 166, 154, 1),
           title: Shimmer.fromColors(
             baseColor: Colors.white,
-            highlightColor: Color.fromRGBO(30, 166, 154, .5),
+            highlightColor: Color.fromRGBO(40, 166, 154, .8),
             child: Column(
               children: [
                 Text(
@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(
                     fontSize: 22.0,
                     fontFamily: "Poppins",
-                    fontWeight: FontWeight.bold,
+                    // fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
