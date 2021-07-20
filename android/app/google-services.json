@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "971105972420",
+    "project_id": "happy-valley-u",
+    "storage_bucket": "happy-valley-u.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971105972420:android:fe26095e998ee58c675991",
+        "android_client_info": {
+          "package_name": "com.farhan.happyvalleyu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971105972420-427943sd9bsl44jl5dvkgfor29qi442k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.farhan.happyvalleyu",
+            "certificate_hash": "b6d4838075909c2a3a4c2b9481c76f54099dbd02"
+          }
+        },
+        {
+          "client_id": "971105972420-o73m8qboj6clc4sdga4j5l02004tovbp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBszlcP8QryMIM2GVVpCTSor6kQlI3nbaM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971105972420-o73m8qboj6clc4sdga4j5l02004tovbp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

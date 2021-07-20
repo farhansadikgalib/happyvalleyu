@@ -3,6 +3,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:happyvalleyu/Check_Connection/No%20Internet.dart';
+import 'package:happyvalleyu/Push%20Notification/pushNotification.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,16 +16,29 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  FirebaseNotifcation? firebase;
   int checkInt = 0;
   late ConnectivityResult previous;
+
+
+
+  handleAsync() async {
+    await firebase!.initialize();
+    String? token = await firebase!.getToken();
+    print("Firebase token : $token");
+  }
+
+
 
 
   @override
   void initState() {
     super.initState();
+    firebase = FirebaseNotifcation();
+    handleAsync();
 
     pullToRefreshController = PullToRefreshController(
-      options: PullToRefreshOptions(color: Color.fromRGBO(30, 166, 154, 1),),
+      options: PullToRefreshOptions(color: Colors.yellow[800]),
       onRefresh: () async {
         if (Platform.isAndroid) {
           _webViewController?.reload();
@@ -36,30 +50,30 @@ class _HomePageState extends State<HomePage> {
     );
 
 
-    Connectivity().onConnectivityChanged.listen((
-        ConnectivityResult connresult) {
-      if (connresult == ConnectivityResult.none) {
+    Connectivity().onConnectivityChanged.listen((ConnectivityResult connresult){
+      if(connresult == ConnectivityResult.none){
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => No_Internet_Connection()), (
-            route) => false);
-      } else if (previous == ConnectivityResult.none) {
+            MaterialPageRoute(builder: (context) => No_Internet_Connection()), (route) => false );
+      }else if(previous == ConnectivityResult.none){
         // internet conn
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => No_Internet_Connection()), (
-            route) => false);
+            MaterialPageRoute(builder: (context) => No_Internet_Connection()), (route) => false );
       }
 
       previous = connresult;
     });
+
+
+
+
   }
 
   Future<bool> _onWillPop() async {
     return (await showDialog(
       context: context,
-      builder: (context) =>
-      new AlertDialog(
+      builder: (context) => new AlertDialog(
         title: new Text('Are you sure?'),
         content: new Text('Do you want to exit an App'),
         actions: <Widget>[
@@ -84,7 +98,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   InAppWebViewController? _webViewController;
-
    double progress = 0;
   String url = '';
 
@@ -111,6 +124,7 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
